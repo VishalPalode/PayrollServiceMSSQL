@@ -37,3 +37,11 @@ select avg(salary) as avgsalary,Gender from employee_payroll group by Gender;
 select max(salary) as maxsalary,Gender from employee_payroll group by Gender;
 select min(salary) as minsalary,Gender from employee_payroll group by Gender;
 select count(Name) as EmployeeCount,Gender from employee_payroll group by Gender;
+
+---UC8-- add employee phone, department(not null), address (using default values)
+select * from employee_payroll;
+Alter table employee_payroll add Phone bigint;
+update employee_payroll set Phone = 1234567890;
+update employee_payroll set Phone = 1234569876 where ID IN (2,4);
+Alter table employee_payroll add Address varchar(100) not null default 'Pune';
+Alter table employee_payroll add Department varchar(250) not null default 'IT';
