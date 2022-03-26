@@ -26,3 +26,9 @@ select * from employee_payroll;
 select salary from employee_payroll where Name = 'Pawan' ;
 select * from employee_payroll where StartDate between cast ('2018-01-01' as date) and GETDATE();
 
+---UC6--Add Gender to Employee_payroll Table and update the rows to reflect the correct emp Gender
+Alter table employee_payroll add Gender char(1);
+update employee_payroll set Gender = 'M' where Id in (1,2,3);
+update employee_payroll set Gender = 'F' where Id in (4,5);
+
+
