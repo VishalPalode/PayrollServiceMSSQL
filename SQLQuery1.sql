@@ -60,3 +60,9 @@ alter table employee_payroll add
 															Net_Pay float not null default 0.00;
 update employee_payroll set Net_Pay = (Basic_Pay-Deduction-Taxable_Pay-Income_Tax);
 select * from employee_payroll;
+
+---UC10--Two department for same employee
+insert into employee_payroll (Name, salary, StartDate, Gender, Phone, Address, Department, Basic_Pay, Deduction, Taxable_Pay, Income_Tax)
+							values ('Pawan', 50000, '2010-05-04', 'M', 1234569876, 'Pune', 'IT', 50000, 1000, 2000, 1500);
+update employee_payroll set Net_Pay = (Basic_Pay-Deduction-Taxable_Pay-Income_Tax);
+update employee_payroll set Department = 'Finance' where Id= 6; 
