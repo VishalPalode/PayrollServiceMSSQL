@@ -45,3 +45,18 @@ update employee_payroll set Phone = 1234567890;
 update employee_payroll set Phone = 1234569876 where ID IN (2,4);
 Alter table employee_payroll add Address varchar(100) not null default 'Pune';
 Alter table employee_payroll add Department varchar(250) not null default 'IT';
+
+---UC9-- Extend the table to have basic pay, taxable pay, net pay, income tax, deduction
+alter table employee_payroll add Basic_Pay float not null default 0.00;
+update employee_payroll set Basic_Pay=70000.00 where Id=1;
+update employee_payroll set Basic_Pay=50000.00 where Id=2;
+update employee_payroll set Basic_Pay=60000.00 where Id=3;
+update employee_payroll set Basic_Pay=40000.00 where Id=4;
+update employee_payroll set Basic_Pay=500000.00 where Id=5;
+alter table employee_payroll add 
+															Deduction float not null default 0.00,
+															Taxable_Pay float not null default 0.00,
+															Income_Tax float not null default 0.00,
+															Net_Pay float not null default 0.00;
+update employee_payroll set Net_Pay = (Basic_Pay-Deduction-Taxable_Pay-Income_Tax);
+select * from employee_payroll;
